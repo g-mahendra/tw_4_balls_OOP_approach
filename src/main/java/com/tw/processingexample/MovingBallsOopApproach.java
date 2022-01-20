@@ -1,6 +1,7 @@
 package com.tw.processingexample;
 
 import processing.core.PApplet;
+
 import java.util.ArrayList;
 
 // Class to define structure of an individual ball
@@ -48,17 +49,21 @@ public class MovingBallsOopApproach extends DrawMovingBalls {
     @Override
     public void draw() {
         drawBall();
-        for (int iterator = 0; iterator < 4; iterator++) {
-            int xCoordinate = listOfBalls.get(iterator).xCoordinate;
-            int yCoordinate = listOfBalls.get(iterator).yCoordinate;
-            xCoordinate+=iterator+1;
-            listOfBalls.set(iterator, new Ball(xCoordinate, yCoordinate));
-        }
+        moveBalls();
     }
 
     private void drawBall() {
         for (Ball ball : listOfBalls) {
             ellipse(ball.xCoordinate, ball.yCoordinate, ball.ballWidth, ball.ballHeight);
+        }
+    }
+
+    private void moveBalls() {
+        for (int iterator = 0; iterator < 4; iterator++) {
+            int xCoordinate = listOfBalls.get(iterator).xCoordinate;
+            int yCoordinate = listOfBalls.get(iterator).yCoordinate;
+            xCoordinate += iterator + 1;
+            listOfBalls.set(iterator, new Ball(xCoordinate, yCoordinate));
         }
     }
 }
